@@ -1,7 +1,9 @@
+import { injectable } from 'inversify';
 import logger from '../lib/logger';
 import { PaymentError, ValidationError } from '../domain/errors';
 import { IPaymentMethod } from './IPaymentMethod';
 
+@injectable()
 export class CreditCardPayment implements IPaymentMethod {
   readonly name = 'credit_card';
 
