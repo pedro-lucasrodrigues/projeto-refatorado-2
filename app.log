@@ -1,1 +1,10 @@
+{"level":"error","message":"Erro ao processar pedido: \nInvalid `this.prisma.product.findUnique()` invocation in\n/workspaces/projeto-refatorado-2/src/repositories/PrismaProductRepository.ts:12:32\n\n   9 constructor(@inject(TYPES.PrismaClient) private prisma: PrismaClient) {}\n  10 \n  11 findById(id: number): Promise<ProductData | null> {\n→ 12   return this.prisma.product.findUnique(\nThe table `main.Product` does not exist in the current database.","timestamp":"2026-11-04T00:33:34.963Z"}
+{"level":"info","message":"Crédito de R$ 110 no cartão final 5678","timestamp":"2026-11-04T00:35:44.262Z"}
+{"level":"info","message":"Ethereal Mail configurado: zcnebgb2srdrt73i@ethereal.email","timestamp":"2026-11-04T00:35:44.693Z"}
+{"level":"info","message":"Email enviado: https://ethereal.email/message/aup94AyP2fStZ0-waup94kx4tM8Ozxc7AAAAAY8oQDr3e.DiBRY2Mv6J0AI","timestamp":"2026-11-04T00:35:46.642Z"}
+{"level":"info","message":"Crédito de R$ 110 no cartão final 5678","timestamp":"2026-11-04T00:58:28.886Z"}
+{"level":"info","message":"Ethereal Mail configurado: ecwk7htaw6qrvm3p@ethereal.email","timestamp":"2026-11-04T00:58:29.330Z"}
+{"level":"info","message":"Email enviado: https://ethereal.email/message/auqDNQyP2fStZ70sauqDN-Qz.3dURq9HAAAAAas2OZv-F-LSHZQx1JARQ8U","timestamp":"2026-11-04T00:58:31.203Z"}
+{"level":"info","message":"Crédito de R$ 50 no cartão final 5678","timestamp":"2026-11-04T00:59:26.988Z"}
+{"level":"info","message":"Email enviado: https://ethereal.email/message/auqDNQyP2fStZ70sauqDcEx4tM8Ozxj0AAAAAq-SKcq3CH0ve9cuPd12lWU","timestamp":"2026-11-04T00:59:28.861Z"}
 
