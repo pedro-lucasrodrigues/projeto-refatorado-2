@@ -1,10 +1,13 @@
+import { inject, injectable } from 'inversify';
 import { Request, Response } from 'express';
+import { TYPES } from '../container/types';
 import logger from '../lib/logger';
 import { PaymentError, ValidationError } from '../domain/errors';
 import { OrderService } from '../services/OrderService';
 
+@injectable()
 export class OrderController {
-  constructor(private orderService: OrderService) {}
+  constructor(@inject(TYPES.OrderService) private orderService: OrderService) {}
 
   processOrder = async (req: Request, res: Response) => {
     try {
