@@ -32,21 +32,17 @@ function resolveAppEnv(): AppEnv {
   return value;
 }
 
-/** Único lugar do projeto que conhece as implementações concretas e decide o modo de execução. */
 export function buildContainer(appEnv: AppEnv = resolveAppEnv()): Container {
   const container = new Container();
 
-  // Pagamentos: todos com o mesmo identificador, injetados via @multiInject
   container.bind<IPaymentMethod>(TYPES.PaymentMethod).to(CreditCardPayment);
   container.bind<IPaymentMethod>(TYPES.PaymentMethod).to(DebitCardPayment);
   container.bind<IPaymentMethod>(TYPES.PaymentMethod).to(PixPayment);
   container.bind<PaymentMethodRegistry>(TYPES.PaymentMethodRegistry).to(PaymentMethodRegistry);
 
-  // Catálogo de produtos: igual nos dois modos (SQLite local, funciona sem internet)
   container.bind<PrismaClient>(TYPES.PrismaClient).toDynamicValue(() => new PrismaClient()).inSingletonScope();
   container.bind<IProductRepository>(TYPES.ProductRepository).to(PrismaProductRepository).inSingletonScope();
 
-  // Infraestrutura que muda conforme o APP_ENV
   if (appEnv === 'test') {
     container.bind<IMailProvider>(TYPES.MailProvider).to(ConsoleMailProvider).inSingletonScope();
     container.bind<IOrderRepository>(TYPES.OrderRepository).to(InMemoryOrderRepository).inSingletonScope();
@@ -55,7 +51,6 @@ export function buildContainer(appEnv: AppEnv = resolveAppEnv()): Container {
     container.bind<IOrderRepository>(TYPES.OrderRepository).to(PrismaOrderRepository).inSingletonScope();
   }
 
-  // Regra de negócio e HTTP
   container.bind<NotificationService>(TYPES.NotificationService).to(NotificationService);
   container.bind<OrderService>(TYPES.OrderService).to(OrderService);
   container.bind<OrderController>(TYPES.OrderController).to(OrderController);
